@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.spring</groupId>
+		<artifactId>AppParent</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>AppEar</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<!-- Expose the WAR module to allow the WAR file to be packaged in the 
+			EAR file by Maven EAR Plugin -->
+		<dependency>
+			<groupId>com.spring</groupId>
+			<artifactId>AppWar</artifactId>
+			<version>1.0</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- Configure Maven EAR Plugin -->
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<displayName>${project.parent.artifactId}</displayName>
+					<modules>
+						<webModule>
+							<groupId>com.spring</groupId>
+							<artifactId>AppWar</artifactId>
+							<bundleFileName>${project.parent.artifactId}.war</bundleFileName>
+							<contextRoot>${context-root}</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
