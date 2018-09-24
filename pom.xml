@@ -5,7 +5,7 @@
 	<groupId>com.spring</groupId>
 	<artifactId>AppParent</artifactId>
 	<version>1.0</version>
-	<packaging>pom</packaging>
+	<packaging>war</packaging>
 	<modules>
 		<module>AppWar</module>
 		<module>AppEar</module>
